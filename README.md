@@ -21,7 +21,7 @@ __En utilisant un fichier de configuration__
 __En ligne de commande exclusivement__
 
 ```sh
-./esr-lexicon -o scanr.structure.recherche -jq '.["facet_groups"][0]["facets"]|map(.["name"])' -u https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-repertoire-national-structures-recherche&rows=0&facet=libelle
+./esr-lexicon -o scanr.structure.recherche -j '.["facet_groups"][0]["facets"]|map(.["name"])' -u "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-repertoire-national-structures-recherche&rows=0&facet=libelle"
 ```
 
 ### Utilisation des expressions jq
