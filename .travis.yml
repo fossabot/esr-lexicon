@@ -24,7 +24,7 @@ before_script:
 
 os:
   - linux
-  - windows
+  # - windows
 cache: cargo
 script:
   - cargo test --verbose --all
