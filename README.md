@@ -4,6 +4,7 @@
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Build Status](https://travis-ci.com/eonm-abes/esr-lexicon.svg?branch=master)](https://travis-ci.com/eonm-abes/esr-lexicon)
+[![Coverage Status](https://coveralls.io/repos/github/eonm-abes/esr-lexicon/badge.svg?branch=master)](https://coveralls.io/github/eonm-abes/esr-lexicon?branch=master)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Eonm/zotero/issues)
 [![dependency status](https://deps.rs/repo/github/eonm/zotero/status.svg)](https://deps.rs/repo/github/eonm-abes/esr-lexicon)
