@@ -1,12 +1,18 @@
+<div align="center">
+
 # ESR lexicon
+
+
+
+</div>
 
 ESR lexicon permet de constituer des dictionnaires d'entitées nommées relative aux structures de recherche françaises :
 
-* Établissements de l'ESR (libélés, sigles)
-* Laboratoires de recherche (libélés, sigles)
-* Autres structure de recherche (libélés, sigles)
+* Établissements de l'ESR (libéllés, sigles)
+* Laboratoires de recherche (libéllés, sigles)
+* Autres structure de recherche (libéllés, sigles)
 * Écoles doctorales
-* Nom et prénom des chercheurs
+* Noms et prénoms des chercheurs
 
 ESR lexicon récupère ses informations depuis [HAL](https://api.archives-ouvertes.fr/search) et [ScanR](https://scanr.enseignementsup-recherche.gouv.fr).
 
