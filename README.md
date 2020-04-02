@@ -11,11 +11,11 @@
 
 </div>
 
-ESR lexicon permet de constituer des dictionnaires d'entitées nommées relative aux structures de recherche françaises :
+ESR lexicon permet de constituer des dictionnaires d'entités nommées relatives aux structures de recherche française :
 
-* Établissements de l'ESR (libéllés, sigles)
-* Laboratoires de recherche (libéllés, sigles)
-* Autres structure de recherche (libéllés, sigles)
+* Établissements de l'ESR (libellés, sigles)
+* Laboratoires de recherche (libellés, sigles)
+* Autres structures de recherche (libellés, sigles)
 * Écoles doctorales
 * Noms et prénoms des chercheurs
 
