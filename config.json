@@ -1,0 +1,52 @@
+[
+    {
+        "url": "https://api.archives-ouvertes.fr/search/?q=*:*&wt=json&fl=*&facet=true&facet.field=authLastName_s&rows=0&facet.limit=100000&facet.mincount=-1",
+        "jq": ".[\"facet_counts\"][\"facet_fields\"][\"authLastName_s\"]",
+        "output": "auth.nom"
+    },
+    {
+        "url": "https://api.archives-ouvertes.fr/search/?q=*:*&wt=json&fl=*&facet=true&facet.field=authFirstName_s&rows=0&facet.limit=100000&facet.mincount=-1",
+        "jq": ".[\"facet_counts\"][\"facet_fields\"][\"authFirstName_s\"]",
+        "output": "auth.prenom"
+    },
+    {
+        "url": "https://api.archives-ouvertes.fr/search/?q=*:*&wt=json&fl=*&facet=true&facet.field=structName_s&rows=0&facet.limit=100000&facet.mincount=-1",
+        "jq": ".[\"facet_counts\"][\"facet_fields\"][\"structName_s\"]",
+        "output": "struct.name"
+    },
+    {
+        "url": "https://api.archives-ouvertes.fr/search/?q=*:*&wt=json&fl=*&facet=true&facet.field=structCode_s&rows=0&facet.limit=100000&facet.mincount=-1",
+        "jq": ".[\"facet_counts\"][\"facet_fields\"][\"structCode_s\"]",
+        "output": "struct.code"
+    },
+    {
+        "url": "https://api.archives-ouvertes.fr/search/?q=*:*&wt=json&fl=*&facet=true&facet.field=structAcronym_s&rows=0&facet.limit=100000&facet.mincount=-1",
+        "jq": ".[\"facet_counts\"][\"facet_fields\"][\"structAcronym_s\"]",
+        "output": "struct.acronym"
+    },
+    {
+        "url": "https://api.archives-ouvertes.fr/search/?q=*:*&wt=json&fl=*&facet=true&facet.field=labStructAcronym_s&rows=0&facet.limit=100000&facet.mincount=-1",
+        "jq": ".[\"facet_counts\"][\"facet_fields\"][\"labStructAcronym_s\"]",
+        "output": "lab.acronym"
+    },
+    {
+        "url": "https://api.archives-ouvertes.fr/search/?q=*:*&wt=json&fl=*&facet=true&facet.field=labStructName_s&rows=0&facet.limit=100000&facet.mincount=-1",
+        "jq": ".[\"facet_counts\"][\"facet_fields\"][\"labStructName_s\"]",
+        "output": "lab.name"
+    },
+    {
+        "url": "https://api.archives-ouvertes.fr/search/?q=*:*&wt=json&fl=*&facet=true&facet.field=instStructName_s&rows=0&facet.limit=100000&facet.mincount=-1",
+        "jq": ".[\"facet_counts\"][\"facet_fields\"][\"instStructName_s\"]",
+        "output": "univ.name"
+    },
+    {
+        "url": "https://api.archives-ouvertes.fr/search/?q=*:*&wt=json&fl=*&facet=true&facet.field=instStructAcronym_s&rows=0&facet.limit=100000&facet.mincount=-1",
+        "jq": ".[\"facet_counts\"][\"facet_fields\"][\"instStructAcronym_s\"]",
+        "output": "univ.acronym"
+    },
+    {
+        "url": "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-repertoire-national-structures-recherche&rows=0&facet=libelle",
+        "jq": ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])",
+        "output": "scanr.struct.name"
+    }
+]
