@@ -25,11 +25,11 @@ matrix:
         - kalakris-cmake
   - os: windows
     env: OS_BUILD=windows
-    # before_install:
+    #   before_install:
     before_script:
     - choco install cygwin
     - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,zip,libtool,gettext,base-devel,autotools,autoconf2.5
-    - export PATH=/usr/bin:/usr/local/bin:/cygdrive/bin:/cygdrive/usr/bin
+    - export PATH=/usr/bin:/usr/local/bin:/cygdrive/bin:/cygdrive/usr/bin:$HOME/.cargo/bin:$PATH
     # - choco uninstall -y mingw
     # - choco upgrade --no-progress -y msys2 bazel
     # - export msys2='cmd //C RefreshEnv.cmd '
