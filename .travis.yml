@@ -29,7 +29,7 @@ matrix:
     before_script:
     - choco install cygwin
     - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,zip,libtool,gettext,base-devel,autotools,autoconf2.5
-    - export PATH=/usr/bin:/usr/local/bin:/cygdrive/bin:/cygdrive/usr/bin:/cygdrive/c/Windows/system32:/cygdrive/c/Windows:$HOME/.cargo/bin:$PATH
+    - export PATH=/usr/bin:/usr/local/bin:/cygdrive/bin:/cygdrive/usr/bin:/cygdrive/c/Windows/system32:C\:\\tools\\cygwin\\bin:/cygdrive/c/Windows:$HOME/.cargo/bin:$PATH
     # - choco uninstall -y mingw
     # - choco upgrade --no-progress -y msys2 bazel
     # - export msys2='cmd //C RefreshEnv.cmd '
