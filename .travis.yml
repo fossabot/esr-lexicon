@@ -36,7 +36,7 @@ matrix:
     - export msys2+='& C:\\tools\\msys64\\msys2_shell.cmd -defterm -no-start'
     - export shell="$msys2 -mingw64 -full-path -here -c \$\* --"
     - export msys2+=" -msys2 -c \$\* --"
-    - pacman --sync --noconfirm --needed \
+    - $msys2 pacman -Syu --noconfirm --needed \
     -         autoconf \
     -         automake \
     -         mingw-w64-x86_64-libtool \
