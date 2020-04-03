@@ -27,7 +27,7 @@ matrix:
     env: OS_BUILD=windows
     before_install:
     - choco install cygwin
-    - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,autoconf,zip
+    - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,autoconf,zip,libtool
 
 before_script:
   - export PATH=$HOME/.cargo/bin:$PATH
