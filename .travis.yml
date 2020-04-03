@@ -37,7 +37,6 @@ matrix:
     - export shell="$msys2 -mingw64 -full-path -here -c \$\* --"
     - export msys2+=" -msys2 -c \$\* --"
     - $msys2 pacman -Syu --noconfirm --needed autoconf automake mingw-w64-x86_64-libtool mingw-w64-x86_64-toolchain perl unzip
-    - taskkill //IM gpg-agent.exe //F
     - export CPPFLAGS=-D__USE_MINGW_ANSI_STDIO=1
     - export PATH=/C/tools/msys64/mingw64/bin:$PATH
     - export GNU_MAKE=mingw32-make
