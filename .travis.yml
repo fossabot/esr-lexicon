@@ -28,6 +28,7 @@ matrix:
     before_install:
     - choco install cygwin
     - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,zip,libtool,gettext,base-devel,autotools,autoconf2.5
+    - export PATH=/usr/bin:/usr/local/bin:/cygdrive/bin:/cygdrive/usr/bin
     # before_script:
     # - choco uninstall -y mingw
     # - choco upgrade --no-progress -y msys2 bazel
