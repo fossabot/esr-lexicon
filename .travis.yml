@@ -29,7 +29,7 @@ matrix:
     - choco install cygwin
     - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,zip,libtool,autoconf2.5,gettext
     before_script:
-    - powershell -Command "C:\tools\cygwin\bin\bash.exe -c \"./windows-install.sh\""
+    - powershell -Command "C:\tools\cygwin\bin\bash.exe -c 'export PATH=/cygdrive/c/tools/cygwin/bin:$PATH'"
 
 before_script:
   - export PATH=$HOME/.cargo/bin:$PATH
