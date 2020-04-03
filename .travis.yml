@@ -27,7 +27,7 @@ matrix:
     env: OS_BUILD=windows
     before_install:
     - choco install cygwin
-    - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,zip,libtool,autoconf2.5,gettext
+    - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,zip,libtool,autoconf2.5,gettext,base-devel
     before_script:
     - choco uninstall -y mingw
     - choco upgrade --no-progress -y msys2 bazel
