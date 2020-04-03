@@ -34,7 +34,7 @@ before_script:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-update || echo "cargo-update already installed" ; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-travis || echo "cargo-travis already installed" ; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install-update -a ; fi
-  - if [ "$OS_BUILD" = "windows" ]; then powershell -Command "C:\tools\cygwin\bin\bash.exe -c './windows-install.sh'" ; fi
+  - if [ "$OS_BUILD" = "windows" ]; then powershell -Command "C:\tools\cygwin\bin\bash.exe -c \"./windows-install.sh\"" ; fi
 
 cache: cargo
 script:
