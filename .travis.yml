@@ -21,8 +21,8 @@ before_script:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-update || echo "cargo-update already installed" ; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-travis || echo "cargo-travis already installed" ; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install-update -a ; fi
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; choco install cygwin ; fi
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,autoconf,zip ; fi
+  - choco install cygwin
+  - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,autoconf,zip
 
 os:
   - linux
