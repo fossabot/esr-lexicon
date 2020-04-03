@@ -1,5 +1,5 @@
 #!/bin/bash
 export PATH=/cygdrive/c/tools/cygwin/bin:$PATH
 
-# unset -v CC
-# unset -v CXX
+unset -v CC
+unset -v CXX
