@@ -28,23 +28,11 @@ matrix:
     #   before_install:
     before_script:
     - choco install cygwin
+    - pacman --needed --noconfirm -Sy pacman-mirrors
     - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,zip,libtool,gettext,base-devel,autotools,autoconf2.5
-    - export PATH=/usr/bin:/usr/local/bin:/cygdrive/bin:/cygdrive/usr/bin:/cygdrive/c/Windows/system32:/C/tools/cygwin/bin:/cygdrive/c/Windows:$HOME/.cargo/bin:$PATH
-    # - choco uninstall -y mingw
-    # - choco upgrade --no-progress -y msys2 bazel
-    # - export msys2='cmd //C RefreshEnv.cmd '
-    # - export msys2+='& set MSYS=winsymlinks:nativestrict '
-    # - export msys2+='& C:\\tools\\msys64\\msys2_shell.cmd -defterm -no-start'
-    # - export shell="$msys2 -mingw64 -full-path -here -c \$\* --"
-    # - export msys2+=" -msys2 -c \$\* --"
-    # - $msys2 pacman -Syu --noconfirm --needed autoconf automake mingw-w64-x86_64-libtool mingw-w64-x86_64-toolchain perl unzip base-devel
-    # - export CPPFLAGS=-D__USE_MINGW_ANSI_STDIO=1
-    # - export PATH=/C/tools/msys64/mingw64/bin:$PATH
-    # - export GNU_MAKE=mingw32-make
-    # - export MAKE=mingw32-make
-    # - export AR=gcc-ar
-    # - export RANLIB=gcc-ranlib
-    # - export COVERITY_SCAN_BRANCH_PATTERN=disable_coverity_scan
+    - export PATH=/C/msys64/usr/bin:/C/msys64/mingw64/bin;:$HOME/.cargo/bin:$PATH
+    - pacman --noconfirm -Su
+    - pacman --noconfirm -S autoconf automake bison flex git
 
 before_script:
   - export PATH=$HOME/.cargo/bin:$PATH
