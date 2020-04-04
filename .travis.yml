@@ -28,11 +28,8 @@ matrix:
     #   before_install:
     before_script:
     - choco install cygwin
-    - C:\msys64\usr\bin\bash -lc "pacman --needed --noconfirm -Sy pacman-mirrors"
-    - C:\msys64\usr\bin\bash -lc "pacman --noconfirm -Su"
-    - C:\msys64\usr\bin\bash -lc "pacman --noconfirm -S autoconf automake bison flex git"
-    - C:\msys64\usr\bin\bash -lc "export PATH=/C/msys64/usr/bin:/C/msys64/mingw64/bin;:$HOME/.cargo/bin:$PATH"
-  
+    - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,zip,libtool,gettext,base-devel,autotools,autoconf2.5,libjq,libjq-devel
+
 before_script:
   - export PATH=$HOME/.cargo/bin:$PATH
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-update || echo "cargo-update already installed" ; fi
