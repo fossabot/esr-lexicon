@@ -28,10 +28,10 @@ matrix:
     #   before_install:
     before_script:
     - choco install cygwin
-    - export PATH=/C/msys64/usr/bin:/C/msys64/mingw64/bin;:$HOME/.cargo/bin:$PATH
     - C:\msys64\usr\bin\bash -lc "pacman --needed --noconfirm -Sy pacman-mirrors"
     - C:\msys64\usr\bin\bash -lc "pacman --noconfirm -Su"
     - C:\msys64\usr\bin\bash -lc "pacman --noconfirm -S autoconf automake bison flex git"
+    - C:\msys64\usr\bin\bash -lc "export PATH=/C/msys64/usr/bin:/C/msys64/mingw64/bin;:$HOME/.cargo/bin:$PATH"
   
 before_script:
   - export PATH=$HOME/.cargo/bin:$PATH
