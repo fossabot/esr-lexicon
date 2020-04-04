@@ -28,7 +28,6 @@ matrix:
     #   before_install:
     before_script:
     - choco install cygwin
-    - pacman --needed --noconfirm -Sy pacman-mirrors
     - export PATH=/C/msys64/usr/bin:/C/msys64/mingw64/bin;:$HOME/.cargo/bin:$PATH
     - C:\msys64\usr\bin\bash -lc "pacman --needed --noconfirm -Sy pacman-mirrors"
     - C:\msys64\usr\bin\bash -lc "pacman --noconfirm -Su"
