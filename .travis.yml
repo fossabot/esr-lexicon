@@ -30,7 +30,7 @@ cache: cargo
 script:
   - cargo test --verbose --all
   - cargo build --release
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then mv target/release/esr-lexicon target/release/esr-lexicon-osx
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then mv target/release/esr-lexicon target/release/esr-lexicon-osx ; fi
 
 deploy:
   provider: releases
