@@ -3,7 +3,7 @@ use std::fs;
 use serde::Deserialize;
 
 
-#[derive(Debug, Deserialize, PartialEq)]
+#[derive(Debug, Deserialize, PartialEq, Clone)]
 pub struct Source {
     pub url: String,
     pub jq: String,

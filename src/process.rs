@@ -15,7 +15,7 @@ pub async fn run(source: config::Source) -> Result<(), Box<dyn Error>> {
     if result.is_empty() {
         warn!("empty data")
     } else {
-        save::write_data(result, source.output).await?;
+        save::write_data(result, source.output, save::WriteMode::Append).await?;
     }
 
     Ok(())

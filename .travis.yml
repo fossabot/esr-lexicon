@@ -4,47 +4,17 @@ rust :
   - nightly
 cache: cargo
 
-matrix:
-  include:
-  - os: osx
-    env: OS_BUILD=osx
-  - os: linux
-    env: OS_BUILD=linux
-    dist: xenial
-    sudo: required
-    addons:
-      apt:
-        packages:
-        - libcurl4-openssl-dev
-        - libelf-dev
-        - libdw-dev
-        - libbfd-dev
-        - binutils-dev
-        - cmake
-        sources:
-        - kalakris-cmake
-  - os: windows
-    env: OS_BUILD=windows
-    #   before_install:
-    before_script:
-    - choco install cygwin
-    - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,zip,libtool,gettext,base-devel,autotools,autoconf2.5
-    - export PATH=/usr/bin:/usr/local/bin:/cygdrive/bin:/cygdrive/usr/bin:/cygdrive/c/Windows/system32:/C/tools/cygwin/bin:/cygdrive/c/Windows:$HOME/.cargo/bin:$PATH
-    # - choco uninstall -y mingw
-    # - choco upgrade --no-progress -y msys2 bazel
-    # - export msys2='cmd //C RefreshEnv.cmd '
-    # - export msys2+='& set MSYS=winsymlinks:nativestrict '
-    # - export msys2+='& C:\\tools\\msys64\\msys2_shell.cmd -defterm -no-start'
-    # - export shell="$msys2 -mingw64 -full-path -here -c \$\* --"
-    # - export msys2+=" -msys2 -c \$\* --"
-    # - $msys2 pacman -Syu --noconfirm --needed autoconf automake mingw-w64-x86_64-libtool mingw-w64-x86_64-toolchain perl unzip base-devel
-    # - export CPPFLAGS=-D__USE_MINGW_ANSI_STDIO=1
-    # - export PATH=/C/tools/msys64/mingw64/bin:$PATH
-    # - export GNU_MAKE=mingw32-make
-    # - export MAKE=mingw32-make
-    # - export AR=gcc-ar
-    # - export RANLIB=gcc-ranlib
-    # - export COVERITY_SCAN_BRANCH_PATTERN=disable_coverity_scan
+addons:
+  apt:
+    packages:
+      - libcurl4-openssl-dev
+      - libelf-dev
+      - libdw-dev
+      - libbfd-dev
+      - binutils-dev
+      - cmake
+    sources:
+      - kalakris-cmake
 
 before_script:
   - export PATH=$HOME/.cargo/bin:$PATH
@@ -52,17 +22,22 @@ before_script:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-travis || echo "cargo-travis already installed" ; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install-update -a ; fi
 
+os:
+  - linux
+  - osx
+  # - windows
 cache: cargo
 script:
   - cargo test --verbose --all
   - cargo build --release
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then mv target/release/esr-lexicon target/release/esr-lexicon-osx
 
 deploy:
   provider: releases
   api_key: $GITHUB_API_KEY
   file:
     - target/release/esr-lexicon
-    - target/release/esr-lexicon.exe
+    - target/release/esr-lexicon-osx
   skip_cleanup: true
   on:
     repo: eonm-abes/esr-lexicon

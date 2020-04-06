@@ -1,5 +1,6 @@
 extern crate clap;
 
+use std::collections::HashSet;
 use env_logger::Env;
 use std::error::Error;
 use tokio::task::JoinHandle;
@@ -17,7 +18,7 @@ extern crate log;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-    let mut tasks: Vec<JoinHandle<Result<(), ()>>>= vec![];
+    let mut process_tasks: Vec<JoinHandle<Result<(), ()>>>= vec![];
 
     let matches = cli::cli();
     info!("ESR lexicon 🕮");
@@ -37,14 +38,27 @@ async fn main() -> Result<(), Box<dyn Error>> {
         })
     };
 
-    for source in sources {
-        tasks.push(tokio::spawn(async move {
+    for source in sources.clone() {
+        process_tasks.push(tokio::spawn(async move {
             process::run(source).await.expect("Something went wrong while processing data");
+            Ok(())
+        })) ;
+    }
+
+    join_all(process_tasks).await;
+
+    let mut dedup_tasks: Vec<JoinHandle<Result<(), ()>>>= vec![];
+
+    let output_files = sources.into_iter().map(|source| source.output).collect::<HashSet<String>>();
+
+    for file in output_files {
+        dedup_tasks.push(tokio::spawn(async move {
+            save::dedup_file(&file).await.expect("Failed to dedup data");
             Ok(())
         }));
     }
 
-    join_all(tasks).await;
+    join_all(dedup_tasks).await;
 
     Ok(())
 }
