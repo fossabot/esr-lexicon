@@ -48,5 +48,20 @@
         "url": "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-repertoire-national-structures-recherche&rows=0&facet=libelle",
         "jq": ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])",
         "output": "scanr.struct.name"
+    },
+    {
+        "url": "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-ecoles_doctorales_annuaire&rows=0&facet=libelle_ed",
+        "jq": ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])",
+        "output": "scanr.ecoles.doct.name"
+    },
+    {
+        "url": "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-ecoles_doctorales_annuaire&rows=0&facet=etablissement_support",
+        "jq": ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])",
+        "output": "univ.name"
+    },
+    {
+        "url": "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-ecoles_doctorales_annuaire&rows=0&facet=laboratoires_rattaches",
+        "jq": ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])",
+        "output": "lab.acronym"
     }
 ]
