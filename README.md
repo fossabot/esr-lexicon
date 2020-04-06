@@ -8,6 +8,8 @@
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)]()
 [![dependency status](https://deps.rs/repo/github/eonm/zotero/status.svg)](https://deps.rs/repo/github/eonm-abes/esr-lexicon)
+[![Linux](https://img.shields.io/badge/&#8203;-linux-yellow.svg?logo=linux&style=flat)]()
+[![Linux](https://img.shields.io/badge/&#8203;-osx-lightgrey.svg?logo=apple&style=flat)]()
 
 </div>
 
