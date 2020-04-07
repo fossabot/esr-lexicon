@@ -19,6 +19,8 @@ ESR lexicon permet de constituer des dictionnaires d'entités nommées relatives
 * Autres structures de recherche (libellés, sigles)
 * Écoles doctorales
 * Noms et prénoms des chercheurs
+* Noms des unités de recherche
+* Noms des départements de recherche
 
 ESR lexicon récupère ses informations depuis [HAL](https://api.archives-ouvertes.fr/search) et [ScanR](https://scanr.enseignementsup-recherche.gouv.fr).
 
@@ -46,3 +48,7 @@ __En ligne de commande exclusivement__
 ### Utilisation des expressions jq
 
 ESR lexicon utilise des [expressions jq](https://stedolan.github.io/jq/manual/) pour extraire les données json. Pour constituer les dictionnaires ESR lexicon attend que l'expression jq utilisée retourne un tableau ou une chaine de caractères.
+
+### Utilisation de la pagination SolR
+
+ERS lexicon suit automatiquement les curseurs SolR pour les requêtes utilisant la [pagination](https://lucene.apache.org/solr/guide/6_6/pagination-of-results.html#fetching-a-large-number-of-sorted-results-cursors) avec `cursorMark=*`.
