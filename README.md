@@ -8,20 +8,28 @@
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)]()
 [![dependency status](https://deps.rs/repo/github/eonm/zotero/status.svg)](https://deps.rs/repo/github/eonm-abes/esr-lexicon)
-[![Linux](https://img.shields.io/badge/&#8203;-linux-yellow.svg?logo=linux&style=flat)]()
-[![Linux](https://img.shields.io/badge/&#8203;-osx-lightgrey.svg?logo=apple&style=flat)]()
-
+[![Linux](https://img.shields.io/badge/&#8203;-linux-yellow.svg?logo=linux&style=flat&logoColor=white)](https://github.com/eonm-abes/esr-lexicon/releases/latest/download/esr-lexicon)
+[![Linux](https://img.shields.io/badge/&#8203;-osx-lightgrey.svg?logo=apple&style=flat&logoColor=white)](https://github.com/eonm-abes/esr-lexicon/releases/latest/download/esr-lexicon-osx)
 </div>
 
-ESR lexicon permet de constituer des dictionnaires d'entités nommées relatives aux structures de recherche française :
+ESR lexicon permet de constituer des dictionnaires d'entités nommées relatives aux structures de recherche françaises :
 
 * Établissements de l'ESR (libellés, sigles)
 * Laboratoires de recherche (libellés, sigles)
 * Autres structures de recherche (libellés, sigles)
 * Écoles doctorales
 * Noms et prénoms des chercheurs
+* Noms des unités de recherche
+* Noms des départements de recherche
 
 ESR lexicon récupère ses informations depuis [HAL](https://api.archives-ouvertes.fr/search) et [ScanR](https://scanr.enseignementsup-recherche.gouv.fr).
+
+## Téléchargement
+
+ESR lexicon est précompilé pour Linux et Mac.
+
+* Dernière version pour [Linux](https://github.com/eonm-abes/esr-lexicon/releases/latest/download/esr-lexicon)
+* Dernière version pour [OSX](https://github.com/eonm-abes/esr-lexicon/releases/latest/download/esr-lexicon-osx)
 
 ## Usage
 
@@ -40,3 +48,7 @@ __En ligne de commande exclusivement__
 ### Utilisation des expressions jq
 
 ESR lexicon utilise des [expressions jq](https://stedolan.github.io/jq/manual/) pour extraire les données json. Pour constituer les dictionnaires ESR lexicon attend que l'expression jq utilisée retourne un tableau ou une chaine de caractères.
+
+### Utilisation de la pagination SolR
+
+ERS lexicon suit automatiquement les curseurs SolR pour les requêtes utilisant la [pagination](https://lucene.apache.org/solr/guide/6_6/pagination-of-results.html#fetching-a-large-number-of-sorted-results-cursors) avec `cursorMark=*`.

@@ -1,6 +1,6 @@
 [package]
 name = "esr-lexicon"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Mathis EON <eon@abes.fr>"]
 edition = "2018"
 
@@ -16,6 +16,7 @@ log = "0.4.8"
 jq-rs = { version = "0.4.1", features = ["bundled"] }
 clap = "2.33.0"
 futures = "0.3.4"
+url = "2.1.1"
 
 [dev-dependencies]
 tempfile = "3.1.0"

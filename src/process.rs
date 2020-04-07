@@ -6,17 +6,17 @@ use jq_rs;
 use serde_json::Value as JsonValue;
 
 pub async fn run(source: config::Source) -> Result<(), Box<dyn Error>> {
-    let response = download::download_data(&source.url).await?;
+    let responses = download::download_data(&source.url).await?;
 
     info!("processing data with jq expression : '{}'", source.jq);
 
-    let result = parse(response.to_string(), source.jq)?;
-   
+    let result = responses.iter().map(|e|  Ok(parse(e.to_string(), source.jq.clone())?)).collect::<Result<Vec<String>,Box<dyn Error>>>()?.join("\n");
+
     if result.is_empty() {
         warn!("empty data")
     } else {
         save::write_data(result, source.output, save::WriteMode::Append).await?;
-    }
+    } 
 
     Ok(())
 }
