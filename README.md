@@ -9,7 +9,7 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)]()
 [![dependency status](https://deps.rs/repo/github/eonm/zotero/status.svg)](https://deps.rs/repo/github/eonm-abes/esr-lexicon)
 [![Linux](https://img.shields.io/badge/&#8203;-linux-yellow.svg?logo=linux&style=flat&logoColor=white)](https://github.com/eonm-abes/esr-lexicon/releases/latest/download/esr-lexicon)
-[![Linux](https://img.shields.io/badge/&#8203;-osx-lightgrey.svg?logo=apple&style=flat&logoColor=white)](https://github.com/eonm-abes/esr-lexicon/releases/latest/download/esr-lexicon-osx)
+[![OSX](https://img.shields.io/badge/&#8203;-osx-lightgrey.svg?logo=apple&style=flat&logoColor=white)](https://github.com/eonm-abes/esr-lexicon/releases/latest/download/esr-lexicon-osx)
 </div>
 
 ESR lexicon permet de constituer des dictionnaires d'entités nommées relatives aux structures de recherche françaises :
