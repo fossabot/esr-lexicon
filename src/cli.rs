@@ -2,7 +2,7 @@ use clap::{App, Arg, ArgMatches};
 
 pub fn cli<'a>() -> ArgMatches<'a> {
     App::new("ESR lexicon")
-        .version("0.1.1")
+        .version("1.1")
         .author("Mathis EON. <eon@abes.fr>")
         .about("Build NER dictionaries")
         .arg(
