@@ -19,8 +19,7 @@ addons:
 before_script:
   - export PATH=$HOME/.cargo/bin:$PATH
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-update || echo "cargo-update already installed" ; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-travis || echo "cargo-travis already installed" ; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-old-lock || echo "cargo-old-lock already installed" ; fi
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install --git https://github.com/roblabla/cargo-travis --branch cargo-metadata || echo "cargo-travis already installed" ; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install-update -a ; fi
 
 os:
@@ -46,7 +45,7 @@ deploy:
     tags: true
 
 after_success:
-  -  if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo-old-lock Cargo.lock > Cargo.lock.old && mv Cargo.lock.old Cargo.lock && cargo coveralls --exclude-pattern=/.cargo,src/main.rs,scr/cli.rs ; fi
+  -  if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo coveralls --exclude-pattern=/.cargo,src/main.rs,scr/cli.rs ; fi
 
 notifications:
   email: false
