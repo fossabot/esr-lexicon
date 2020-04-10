@@ -20,7 +20,7 @@ before_script:
   - export PATH=$HOME/.cargo/bin:$PATH
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-update || echo "cargo-update already installed" ; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-travis || echo "cargo-travis already installed" ; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo-old-lock || echo "cargo-travis already installed" ; fi
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-old-lock || echo "cargo-old-lock already installed" ; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install-update -a ; fi
 
 os:
