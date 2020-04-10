@@ -46,7 +46,7 @@ deploy:
     tags: true
 
 after_success:
-  -  if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo-old-lock Cargo.lock > Cargo.lock && cargo coveralls --exclude-pattern=/.cargo,src/main.rs,scr/cli.rs ; fi
+  -  if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo-old-lock Cargo.lock > Cargo.lock.old && mv Cargo.lock.old Cargo.lock && cargo coveralls --exclude-pattern=/.cargo,src/main.rs,scr/cli.rs ; fi
 
 notifications:
   email: false
