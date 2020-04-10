@@ -13,8 +13,7 @@ addons:
       - libbfd-dev
       - binutils-dev
       - cmake
-      - gcc
-      - autoreconf
+      - build-essential
       - make
     sources:
       - kalakris-cmake
