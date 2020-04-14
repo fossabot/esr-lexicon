@@ -2,7 +2,7 @@ use clap::{App, Arg, ArgMatches};
 
 pub fn cli<'a>() -> ArgMatches<'a> {
     App::new("ESR lexicon")
-        .version("0.1.1")
+        .version("0.2.0")
         .author("Mathis EON. <eon@abes.fr>")
         .about("Build NER dictionaries")
         .arg(
@@ -41,7 +41,7 @@ pub fn cli<'a>() -> ArgMatches<'a> {
                 .required_unless_one(&["url", "config"])
                 .conflicts_with("url")
                 .requires_all(&["jq", "output"])
-                .help("Input URL"),
+                .help("Input FILE"),
         )
         .arg(
             Arg::with_name("jq")
