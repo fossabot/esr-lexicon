@@ -1,47 +1,57 @@
-use std::error::Error;
 use crate::config;
 use crate::download;
 use crate::save;
+use crate::utils;
 use jq_rs;
-use serde_json::Value as JsonValue;
+use serde_json;
+use std::error::Error;
 
 pub async fn run(source: config::Source) -> Result<(), Box<dyn Error>> {
-    let responses = download::download_data(&source.url).await?;
+    let responses = match source.source.clone() {
+        config::SourceType::Url(url) => download::download_data(&url).await?,
+        config::SourceType::FilePath(path) => {
+            vec![serde_json::from_str(&utils::open_file(path).await?).expect("invalid json")]
+        }
+    };
 
     info!("processing data with jq expression : '{}'", source.jq);
 
-    let result = responses.iter().map(|e|  Ok(parse(e.to_string(), source.jq.clone())?)).collect::<Result<Vec<String>,Box<dyn Error>>>()?.join("\n");
+    let result = responses
+        .iter()
+        .map(|e| Ok(parse(e.to_string(), source.clone().jq.clone())?))
+        .collect::<Result<Vec<String>, Box<dyn Error>>>()?
+        .join("\n");
 
     if result.is_empty() {
         warn!("empty data")
     } else {
         save::write_data(result, source.output, save::WriteMode::Append).await?;
-    } 
+    }
 
     Ok(())
 }
 
 fn parse<S: Into<String>>(data: S, jq_expression: S) -> Result<String, Box<dyn Error>> {
-    let jq_result: String = jq_rs::run(&jq_expression.into(), &data.into())?;
-    let parsed_jq_result: JsonValue = serde_json::from_str(&jq_result)?;
+    let data = data.into();
+    let jq_expression = jq_expression.into();
+    let mut jq_result: String = jq_rs::run(&jq_expression, &data)?;
 
-    let result = match parsed_jq_result {
-        JsonValue::Array(array) => array
-            .iter()
-            .filter_map(|v| v.as_str())
-            .collect::<Vec<&str>>()
-            .join("\n"),
-        JsonValue::String(content) => content.clone(),
-        _ => "".to_string(),
-    };
+    if jq_expression.trim_end().ends_with("@tsv") || jq_expression.trim_end().ends_with("@csv") {
+        jq_result = jq_result
+            .split("\n")
+            .into_iter()
+            .map(|e| e.trim_matches('"').into())
+            .collect::<Vec<String>>()
+            .join("\n");
+    }
 
-    Ok(result)
+    Ok(jq_result)
 }
 
 #[cfg(test)]
 mod process_tests {
     use super::*;
-    use crate::config::{parse_config, Source};
+    use crate::config::{parse_config, Source, SourceType};
     use tempfile::NamedTempFile;
 
     #[tokio::test]
@@ -50,8 +60,8 @@ mod process_tests {
         let file_path = format!("{}", &file.path().display());
 
         let config = Source {
-            url : "https://postman-echo.com/get?foo1=bar1&foo2=bar2".into(),
-            jq : ".[\"args\"][\"foo\"]".into(),
+            source: SourceType::Url("https://postman-echo.com/get?foo1=bar1&foo2=bar2".into()),
+            jq: ".[\"args\"][\"foo\"]".into(),
             output: file_path,
         };
 
@@ -60,8 +70,7 @@ mod process_tests {
         Ok(())
     }
 
-
-   #[tokio::test]
+    #[tokio::test]
     async fn test_parse() -> Result<(), Box<dyn std::error::Error>> {
         let config_string = r#"
         [
@@ -73,7 +82,7 @@ mod process_tests {
         ]"#;
 
         let config = parse_config(config_string)?;
-        
+
         let json_data = r#"
         {
             "nhits": 10896,
