@@ -48,7 +48,7 @@ __En ligne de commande exclusivement__
 
 ### Utilisation des expressions jq
 
-ESR lexicon utilise des [expressions jq](https://stedolan.github.io/jq/manual/) pour extraire les données json. Pour constituer les dictionnaires ESR lexicon attend que l'expression jq utilisée retourne un tableau ou une chaine de caractères.
+ESR lexicon utilise des [expressions jq](https://stedolan.github.io/jq/manual/) pour extraire les données json.
 
 ### Utilisation de la pagination SolR
 
