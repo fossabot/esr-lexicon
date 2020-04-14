@@ -51,7 +51,7 @@ FLAGS:
 
 OPTIONS:
     -c, --config <FILE>      Sets a custom config file
-    -f, --file <FILE>        Input URL
+    -f, --file <FILE>        Input file
     -j, --jq <EXPRESSION>    Expression used for parsing data
     -o, --output <FILE>      Output file
     -u, --url <URL>          Input URL
