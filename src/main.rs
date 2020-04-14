@@ -34,7 +34,6 @@ async fn main() -> Result<(), Box<dyn Error>> {
         matches.value_of("file"),
     ) {
         (Some(config), None, None) => {
-            let config = matches.value_of("config").unwrap_or("config.json");
             config::parse_config(utils::open_file(config).await?).expect("Failed to parse config")
         }
         (None, Some(url), None) => vec![config::Source {
