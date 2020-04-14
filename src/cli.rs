@@ -41,7 +41,7 @@ pub fn cli<'a>() -> ArgMatches<'a> {
                 .required_unless_one(&["url", "config"])
                 .conflicts_with("url")
                 .requires_all(&["jq", "output"])
-                .help("Input FILE"),
+                .help("Input file"),
         )
         .arg(
             Arg::with_name("jq")
