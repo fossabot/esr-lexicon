@@ -2,7 +2,7 @@ use clap::{App, Arg, ArgMatches};
 
 pub fn cli<'a>() -> ArgMatches<'a> {
     App::new("ESR lexicon")
-        .version("1.1")
+        .version("0.2.0")
         .author("Mathis EON. <eon@abes.fr>")
         .about("Build NER dictionaries")
         .arg(
@@ -11,7 +11,8 @@ pub fn cli<'a>() -> ArgMatches<'a> {
                 .long("config")
                 .value_name("FILE")
                 .help("Sets a custom config file")
-                .conflicts_with_all(&["url", "jq", "output"])
+                .required_unless_one(&["url", "file"])
+                .conflicts_with_all(&["url", "file", "jq", "output"])
                 .takes_value(true),
         )
         .arg(
@@ -26,8 +27,21 @@ pub fn cli<'a>() -> ArgMatches<'a> {
                 .long("url")
                 .value_name("URL")
                 .takes_value(true)
+                .required_unless_one(&["file", "config"])
+                .conflicts_with("file")
                 .requires_all(&["jq", "output"])
                 .help("Input URL"),
+        )
+        .arg(
+            Arg::with_name("file")
+                .short("f")
+                .long("file")
+                .value_name("FILE")
+                .takes_value(true)
+                .required_unless_one(&["url", "config"])
+                .conflicts_with("url")
+                .requires_all(&["jq", "output"])
+                .help("Input file"),
         )
         .arg(
             Arg::with_name("jq")
@@ -35,7 +49,7 @@ pub fn cli<'a>() -> ArgMatches<'a> {
                 .long("jq")
                 .value_name("EXPRESSION")
                 .takes_value(true)
-                .requires_all(&["url", "output"])
+                .required_unless(&"config")
                 .help("Expression used for parsing data"),
         )
         .arg(
@@ -44,7 +58,7 @@ pub fn cli<'a>() -> ArgMatches<'a> {
                 .long("output")
                 .value_name("FILE")
                 .takes_value(true)
-                .requires_all(&["url", "jq"])
+                .required_unless(&"config")
                 .help("Output file"),
         )
         .get_matches()

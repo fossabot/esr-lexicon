@@ -1,22 +1,20 @@
-use std::error::Error;
-use std::fs;
 use serde::Deserialize;
+use std::error::Error;
 
+#[derive(Debug, Deserialize, PartialEq, Clone)]
+pub enum SourceType {
+    #[serde(rename = "url")]
+    Url(String),
+    #[serde(rename = "file")]
+    FilePath(String),
+}
 
 #[derive(Debug, Deserialize, PartialEq, Clone)]
 pub struct Source {
-    pub url: String,
+    #[serde(flatten)]
+    pub source: SourceType,
     pub jq: String,
     pub output: String,
-}
-
-pub fn open_file<S: Into<String>>(path: S) -> String {
-    let path = path.into();
-
-    info!("opening config : {}", &path);
-
-    let contents = fs::read_to_string(&path).expect("Failed to read config file");
-    contents
 }
 
 pub fn parse_config<S: Into<String>>(data: S) -> Result<Vec<Source>, Box<dyn Error>> {
@@ -29,10 +27,11 @@ pub fn parse_config<S: Into<String>>(data: S) -> Result<Vec<Source>, Box<dyn Err
 #[cfg(test)]
 mod config_tests {
     use super::*;
+    use crate::utils;
 
-   #[tokio::test]
+    #[tokio::test]
     async fn test_open_file() -> Result<(), Box<dyn std::error::Error>> {
-        let config = open_file("config.json");
+        let config = utils::open_file("config.json").await?;
         assert_eq!(config.is_empty(), false);
         Ok(())
     }
@@ -51,12 +50,32 @@ mod config_tests {
         let config = parse_config(config_string)?;
 
         let expected_config = Source {
-            url: "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-repertoire-national-structures-recherche&rows=0&facet=libelle".into(),
+            source: SourceType::Url("https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-repertoire-national-structures-recherche&rows=0&facet=libelle".into()),
             jq: ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])".into(),
             output: "scanr.struct.name".into(),
         };
 
         assert_eq!(config, vec!(expected_config));
+
+        let config_string = r#"
+        [
+            {
+                "file": "/home/foo/bar.json",
+                "jq": ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])",
+                "output": "scanr.struct.name"
+            }
+        ]"#;
+
+        let config = parse_config(config_string)?;
+
+        let expected_config = Source {
+            source: SourceType::FilePath("/home/foo/bar.json".into()),
+            jq: ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])".into(),
+            output: "scanr.struct.name".into(),
+        };
+
+        assert_eq!(config, vec!(expected_config));
+
         Ok(())
     }
 }

@@ -8,11 +8,12 @@
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)]()
 [![dependency status](https://deps.rs/repo/github/eonm/zotero/status.svg)](https://deps.rs/repo/github/eonm-abes/esr-lexicon)
-[![Linux](https://img.shields.io/badge/&#8203;-linux-yellow.svg?logo=linux&style=flat&logoColor=white)](https://github.com/eonm-abes/esr-lexicon/releases/latest/download/esr-lexicon)
-[![Linux](https://img.shields.io/badge/&#8203;-osx-lightgrey.svg?logo=apple&style=flat&logoColor=white)](https://github.com/eonm-abes/esr-lexicon/releases/latest/download/esr-lexicon-osx)
+[![Linux](https://img.shields.io/badge/%E2%80%8B-linux-yellow.svg?logo=linux&style=flat&logoColor=white)](https://github.com/eonm-abes/esr-lexicon/releases/latest/download/esr-lexicon)
+[![OSX](https://img.shields.io/badge/%E2%80%8B-osx-lightgrey.svg?logo=apple&style=flat&logoColor=white)](https://github.com/eonm-abes/esr-lexicon/releases/latest/download/esr-lexicon-osx)
+
 </div>
 
-ESR lexicon permet de constituer des dictionnaires d'entités nommées relatives aux structures de recherche françaises :
+ESR lexicon permet de constituer des dictionnaires d'entités nommées relatifs aux structures de recherche françaises :
 
 * Établissements de l'ESR (libellés, sigles)
 * Laboratoires de recherche (libellés, sigles)
@@ -33,6 +34,29 @@ ESR lexicon est précompilé pour Linux et Mac.
 
 ## Usage
 
+```
+$ ./esr-lexicon -h
+
+ESR lexicon 0.2.0
+Mathis EON. <eon@abes.fr>
+Build NER dictionaries
+
+USAGE:
+    esr-lexicon [FLAGS] --config <FILE> --file <FILE> --jq <EXPRESSION> --output <FILE> --url <URL>
+
+FLAGS:
+    -h, --help       Prints help information
+    -s, --silent     Silent output
+    -V, --version    Prints version information
+
+OPTIONS:
+    -c, --config <FILE>      Sets a custom config file
+    -f, --file <FILE>        Input file
+    -j, --jq <EXPRESSION>    Expression used for parsing data
+    -o, --output <FILE>      Output file
+    -u, --url <URL>          Input URL
+```
+
 __En utilisant un fichier de configuration__
 
 ```sh
@@ -47,7 +71,7 @@ __En ligne de commande exclusivement__
 
 ### Utilisation des expressions jq
 
-ESR lexicon utilise des [expressions jq](https://stedolan.github.io/jq/manual/) pour extraire les données json. Pour constituer les dictionnaires ESR lexicon attend que l'expression jq utilisée retourne un tableau ou une chaine de caractères.
+ESR lexicon utilise des [expressions jq](https://stedolan.github.io/jq/manual/) pour extraire les données json.
 
 ### Utilisation de la pagination SolR
 

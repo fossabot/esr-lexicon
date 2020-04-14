@@ -13,13 +13,15 @@ addons:
       - libbfd-dev
       - binutils-dev
       - cmake
+      - build-essential
+      - make
     sources:
       - kalakris-cmake
 
 before_script:
   - export PATH=$HOME/.cargo/bin:$PATH
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-update || echo "cargo-update already installed" ; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install cargo-travis || echo "cargo-travis already installed" ; fi
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install --git https://github.com/roblabla/cargo-travis --branch cargo-metadata || echo "cargo-travis already installed" ; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cargo install-update -a ; fi
 
 os:
