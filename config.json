@@ -1,82 +1,82 @@
 [
     {
         "url": "https://api.archives-ouvertes.fr/ref/author?cursorMark=*&sort=docid+asc&rows=100000&fl=lastName_s",
-        "jq": ".[\"response\"][\"docs\"]|map(.[\"lastName_s\"])",
+        "jq": ".[\"response\"][\"docs\"]|map([.[\"lastName_s\"]])| .[] | @tsv",
         "output": "hal.auth.nom"
     },
     {
         "url": "https://api.archives-ouvertes.fr/ref/author?cursorMark=*&sort=docid+asc&rows=100000&fl=firstName_s",
-        "jq": ".[\"response\"][\"docs\"]|map(.[\"firstName_s\"])",
+        "jq": ".[\"response\"][\"docs\"]|map([.[\"firstName_s\"]])| .[] | @tsv",
         "output": "hal.auth.prenom"
     },
     {
         "url": "https://api.archives-ouvertes.fr/ref/structure?cursorMark=*&sort=docid+asc&rows=100000&fl=label_s&q=type_s:laboratory",
-        "jq": ".[\"response\"][\"docs\"]|map(.[\"label_s\"])",
+        "jq": ".[\"response\"][\"docs\"]|map([.[\"label_s\"]])| .[] | @tsv",
         "output": "hal.laboratory.name"
     },
     {
         "url": "https://api.archives-ouvertes.fr/ref/structure?cursorMark=*&sort=docid+asc&rows=100000&fl=acronym_s&q=type_s:laboratory",
-        "jq": ".[\"response\"][\"docs\"]|map(.[\"acronym_s\"])",
+        "jq": ".[\"response\"][\"docs\"]|map([.[\"acronym_s\"]])| .[] | @tsv",
         "output": "hal.laboratory.acronym"
     },
     {
         "url": "https://api.archives-ouvertes.fr/ref/structure?cursorMark=*&sort=docid+asc&rows=100000&fl=label_s&q=type_s:institution",
-        "jq": ".[\"response\"][\"docs\"]|map(.[\"label_s\"])",
+        "jq": ".[\"response\"][\"docs\"]|map([.[\"label_s\"]])| .[] | @tsv",
         "output": "hal.institution.name"
     },
     {
         "url": "https://api.archives-ouvertes.fr/ref/structure?cursorMark=*&sort=docid+asc&rows=100000&fl=acronym_s&q=type_s:institution",
-        "jq": ".[\"response\"][\"docs\"]|map(.[\"acronym_s\"])",
+        "jq": ".[\"response\"][\"docs\"]|map([.[\"acronym_s\"]])| .[] | @tsv",
         "output": "hal.institution.acronym"
     },
     {
         "url": "https://api.archives-ouvertes.fr/ref/structure?cursorMark=*&sort=docid+asc&rows=100000&fl=label_s&q=type_s:department",
-        "jq": ".[\"response\"][\"docs\"]|map(.[\"label_s\"])",
+        "jq": ".[\"response\"][\"docs\"]|map([.[\"label_s\"]])| .[] | @tsv",
         "output": "hal.department.name"
     },
     {
         "url": "https://api.archives-ouvertes.fr/ref/structure?cursorMark=*&sort=docid+asc&rows=100000&fl=acronym_s&q=type_s:department",
-        "jq": ".[\"response\"][\"docs\"]|map(.[\"acronym_s\"])",
+        "jq": ".[\"response\"][\"docs\"]|map([.[\"acronym_s\"]])| .[] | @tsv",
         "output": "hal.department.acronym"
     },
     {
         "url": "https://api.archives-ouvertes.fr/ref/structure?cursorMark=*&sort=docid+asc&rows=100000&fl=label_s&q=type_s:regrouplaboratory",
-        "jq": ".[\"response\"][\"docs\"]|map(.[\"label_s\"])",
+        "jq": ".[\"response\"][\"docs\"]|map([.[\"label_s\"]])| .[] | @tsv",
         "output": "hal.regrouplaboratory.name"
     },
     {
         "url": "https://api.archives-ouvertes.fr/ref/structure?cursorMark=*&sort=docid+asc&rows=100000&fl=acronym_s&q=type_s:regrouplaboratory",
-        "jq": ".[\"response\"][\"docs\"]|map(.[\"acronym_s\"])",
+        "jq": ".[\"response\"][\"docs\"]|map([.[\"acronym_s\"]])| .[] | @tsv",
         "output": "hal.regrouplaboratory.acronym"
     },
     {
         "url": "https://api.archives-ouvertes.fr/ref/structure?cursorMark=*&sort=docid+asc&rows=100000&fl=label_s&q=type_s:regroupinstitution",
-        "jq": ".[\"response\"][\"docs\"]|map(.[\"label_s\"])",
+        "jq": ".[\"response\"][\"docs\"]|map([.[\"label_s\"]])| .[] | @tsv",
         "output": "hal.regroupinstitution.name"
     },
     {
         "url": "https://api.archives-ouvertes.fr/ref/structure?cursorMark=*&sort=docid+asc&rows=100000&fl=acronym_s&q=type_s:regroupinstitution",
-        "jq": ".[\"response\"][\"docs\"]|map(.[\"acronym_s\"])",
+        "jq": ".[\"response\"][\"docs\"]|map([.[\"acronym_s\"]])| .[] | @tsv",
         "output": "hal.regroupinstitution.acronym"
     },
     {
         "url": "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-repertoire-national-structures-recherche&rows=0&facet=libelle",
-        "jq": ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])",
+        "jq": ".[\"facet_groups\"][0][\"facets\"]|map([.[\"name\"]])| .[] | @tsv",
         "output": "scanr.struct.name"
     },
     {
         "url": "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-ecoles_doctorales_annuaire&rows=0&facet=libelle_ed",
-        "jq": ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])",
+        "jq": ".[\"facet_groups\"][0][\"facets\"]|map([.[\"name\"]])| .[] | @tsv",
         "output": "scanr.ecoles-doctorales.name"
     },
     {
         "url": "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-ecoles_doctorales_annuaire&rows=0&facet=etablissement_support",
-        "jq": ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])",
+        "jq": ".[\"facet_groups\"][0][\"facets\"]|map([.[\"name\"]])| .[] | @tsv",
         "output": "scanr.univ.name"
     },
     {
         "url": "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-ecoles_doctorales_annuaire&rows=0&facet=laboratoires_rattaches",
-        "jq": ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])",
+        "jq": ".[\"facet_groups\"][0][\"facets\"]|map([.[\"name\"]])| .[] | @tsv",
         "output": "scanr.laboratory.acronym"
     }
 ]
