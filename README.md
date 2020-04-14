@@ -34,6 +34,29 @@ ESR lexicon est précompilé pour Linux et Mac.
 
 ## Usage
 
+```
+$ ./esr-lexicon -h
+
+ESR lexicon 0.2.0
+Mathis EON. <eon@abes.fr>
+Build NER dictionaries
+
+USAGE:
+    esr-lexicon [FLAGS] --config <FILE> --file <FILE> --jq <EXPRESSION> --output <FILE> --url <URL>
+
+FLAGS:
+    -h, --help       Prints help information
+    -s, --silent     Silent output
+    -V, --version    Prints version information
+
+OPTIONS:
+    -c, --config <FILE>      Sets a custom config file
+    -f, --file <FILE>        Input URL
+    -j, --jq <EXPRESSION>    Expression used for parsing data
+    -o, --output <FILE>      Output file
+    -u, --url <URL>          Input URL
+```
+
 __En utilisant un fichier de configuration__
 
 ```sh
