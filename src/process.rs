@@ -76,7 +76,7 @@ mod process_tests {
         [
             {
                 "url": "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=fr-esr-repertoire-national-structures-recherche&rows=0&facet=libelle",
-                "jq": ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])",
+                "jq": ".[\"facet_groups\"][0][\"facets\"]|map([.[\"name\"]]) | .[] | @tsv",
                 "output": "scanr.struct.name"
             }
         ]"#;
@@ -118,7 +118,7 @@ mod process_tests {
         }"#;
 
         let result = parse(json_data, &config[0].jq)?;
-        let expected_result = "LABORATOIRE DE PSYCHOLOGIE\nCENTRE D'ETUDE DES CORRESPONDANCES ET JOURNAUX INTIMES DES 19E ET 20E SIECLES";
+        let expected_result = "LABORATOIRE DE PSYCHOLOGIE\nCENTRE D'ETUDE DES CORRESPONDANCES ET JOURNAUX INTIMES DES 19E ET 20E SIECLES\n";
 
         assert_eq!(result, expected_result);
 

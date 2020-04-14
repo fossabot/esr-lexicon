@@ -60,7 +60,7 @@ mod config_tests {
         let config_string = r#"
         [
             {
-                "path": "/home/foo/bar.json",
+                "file": "/home/foo/bar.json",
                 "jq": ".[\"facet_groups\"][0][\"facets\"]|map(.[\"name\"])",
                 "output": "scanr.struct.name"
             }
