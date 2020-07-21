@@ -6,7 +6,8 @@
 [![Build Status](https://travis-ci.com/eonm-abes/esr-lexicon.svg?branch=master)](https://travis-ci.com/eonm-abes/esr-lexicon)
 [![Coverage Status](https://coveralls.io/repos/github/eonm-abes/esr-lexicon/badge.svg?branch=master)](https://coveralls.io/github/eonm-abes/esr-lexicon?branch=master)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)]()
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)][![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Feonm-abes%2Fesr-lexicon.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Feonm-abes%2Fesr-lexicon?ref=badge_shield)
+()
 [![dependency status](https://deps.rs/repo/github/eonm/zotero/status.svg)](https://deps.rs/repo/github/eonm-abes/esr-lexicon)
 [![Linux](https://img.shields.io/badge/%E2%80%8B-linux-yellow.svg?logo=linux&style=flat&logoColor=white)](https://github.com/eonm-abes/esr-lexicon/releases/latest/download/esr-lexicon)
 [![OSX](https://img.shields.io/badge/%E2%80%8B-osx-lightgrey.svg?logo=apple&style=flat&logoColor=white)](https://github.com/eonm-abes/esr-lexicon/releases/latest/download/esr-lexicon-osx)
@@ -76,3 +77,7 @@ ESR lexicon utilise des [expressions jq](https://stedolan.github.io/jq/manual/) 
 ### Utilisation de la pagination SolR
 
 ERS lexicon suit automatiquement les curseurs SolR pour les requêtes utilisant la [pagination](https://lucene.apache.org/solr/guide/6_6/pagination-of-results.html#fetching-a-large-number-of-sorted-results-cursors) avec `cursorMark=*`.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Feonm-abes%2Fesr-lexicon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Feonm-abes%2Fesr-lexicon?ref=badge_large)
